@@ -1,0 +1,23 @@
+const cards = document.querySelectorAll(".card");
+let first = null;
+
+cards.forEach(card=>{
+  card.addEventListener("click", ()=>{
+    card.classList.add("selected");
+
+    if(!first){
+      first = card;
+    } else {
+      if(first.textContent === card.textContent){
+        first.style.background = "#2e7d32";
+        card.style.background = "#2e7d32";
+      } else {
+        setTimeout(()=>{
+          first.classList.remove("selected");
+          card.classList.remove("selected");
+        },500);
+      }
+      first = null;
+    }
+  });
+});
